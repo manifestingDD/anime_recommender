@@ -12,4 +12,5 @@ wheels/
 # Production 
 logs/
 ANIME_RECOMMENDER.egg-info/
-.env
+.envkubectl
+kubectl.sha256
