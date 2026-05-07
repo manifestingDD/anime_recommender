@@ -8,17 +8,25 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 ## Work directory inside the docker container
 WORKDIR /app
 
-# Install uv
+
+# ====================================================
+## Dependency Handling
+
+# 0. Install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
-# Copy dependency files
+# 1. Copy ONLY the lock and toml files
 COPY pyproject.toml uv.lock ./
 
-# Install dependencies
-RUN uv sync --frozen --no-dev
+# 2. Install external dependencies ONLY (skips building anime-recommender)
+RUN uv sync --frozen --no-dev --no-install-project
 
-## Copying all contents from local(github) to app
+# 3. Now copy the rest of your application code
 COPY . .
+
+# 4. Run sync one more time to install the local project itself
+RUN uv sync --frozen --no-dev
+# ========================================================
 
 # Used PORTS
 EXPOSE 8501

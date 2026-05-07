@@ -13,3 +13,6 @@ wheels/
 logs/
 ANIME_RECOMMENDER.egg-info/
 .env
+
+# Cursor context
+cursor_doc
