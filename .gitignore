@@ -9,10 +9,14 @@ wheels/
 # Virtual environments
 .venv
 
+# Secrets
+.env
+
 # Production 
 logs/
 ANIME_RECOMMENDER.egg-info/
-.env
+.envkubectl
+kubectl.sha256
 
-# Cursor context
-cursor_doc
+# Cursor Context
+cursor_doc/
